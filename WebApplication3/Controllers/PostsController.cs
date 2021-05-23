@@ -50,6 +50,7 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 db.Posts.Add(post);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -31,5 +31,14 @@ namespace WebApplication3.general
             }
             return null;
         }
+        public static void delete_Image(string path,string ImageName)
+        {
+            if (ImageName!=null)
+            {
+                string p = Path.Combine(path, ImageName);
+                System.IO.File.Delete(p);
+            }
+           
+        }
     }
 }

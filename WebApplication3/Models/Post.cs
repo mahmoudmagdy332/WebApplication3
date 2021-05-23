@@ -16,14 +16,13 @@ namespace WebApplication3.Models
         public string TripDestenation { get; set; }
         [Required, DataType(DataType.MultilineText)]
         public string TripDetails { get; set; }
-        [Required, DataType(DataType.Upload)]
         public string TripImage { get; set; }
+        [Required, RegularExpression(@"[0-9]*\.?[0-9]+", ErrorMessage = "price must be number")]
         public double Price { get; set; }
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime TripDate { get; set; }
-        [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PostDate { get; set; }
@@ -31,6 +30,7 @@ namespace WebApplication3.Models
         public int RankLike { get; set; }
         [DefaultValue(0)]
         public int RankDislike { get; set; }
+        public bool Approved { get; set; }
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Comment> comments { get; set; }

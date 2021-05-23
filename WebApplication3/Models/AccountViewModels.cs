@@ -3,6 +3,45 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication3.Models
 {
+    public class ProfileUserEdite
+    {
+       
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+      
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(11, ErrorMessage = "The phone namber must be 11 number", MinimumLength = 11)]
+        [Display(Name = "Phone")]
+        public string PhoneNumber { get; set; }
+
+
+        [Display(Name = "Photo")]
+        public string Photo { get; set; }
+
+     
+
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -102,7 +141,7 @@ namespace WebApplication3.Models
         [Display(Name = "Photo")]
         public string Photo { get; set; }
     }
-
+  
     public class ResetPasswordViewModel
     {
         [Required]
@@ -123,7 +162,7 @@ namespace WebApplication3.Models
 
         public string Code { get; set; }
     }
-
+ 
     public class ForgotPasswordViewModel
     {
         [Required]

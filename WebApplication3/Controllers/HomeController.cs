@@ -13,6 +13,13 @@ namespace WebApplication3.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+               if( User.IsInRole("TripsAgencey")) {
+                    return RedirectToAction("index", "TripAgency");
+                }
+                return Redirect("/");
+            }
             return View();
         }
         [Authorize(Roles = "Admin")]

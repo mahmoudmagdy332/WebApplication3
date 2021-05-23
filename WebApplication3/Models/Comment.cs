@@ -11,6 +11,7 @@ namespace WebApplication3.Models
         public int Id { get; set; }
         [Required]
         public string CommentDescription { get; set; }
+        public string Answer { get; set; }
 
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }

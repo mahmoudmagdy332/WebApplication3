@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WebApplication3.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreatePost")
+    @Html.ActionLink("Profile", "Profile")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.TripTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDestenation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TripDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Approved)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.TripTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDestenation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostDate)
+        </td>
+        <td>
+            @if (item.Approved)
+            {
+                <p>1</p>
+            }
+            else
+            {
+                <p>0</p>
+            }
+           
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPost", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeletePost", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -13,7 +13,7 @@ using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
-    [Authorize]
+   [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -177,7 +177,7 @@ namespace WebApplication3.Controllers
                 }
 
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber,Photo=model.Photo};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -290,7 +290,7 @@ namespace WebApplication3.Controllers
             AddErrors(result);
             return View();
         }
-
+       
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
