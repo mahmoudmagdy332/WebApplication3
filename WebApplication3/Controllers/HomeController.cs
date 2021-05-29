@@ -18,7 +18,7 @@ namespace WebApplication3.Controllers
                if( User.IsInRole("TripsAgencey")) {
                     return RedirectToAction("index", "TripAgency");
                 }
-                return Redirect("/");
+              
             }
             return View();
         }

@@ -28,11 +28,7 @@ namespace WebApplication3.Controllers
             db = new ApplicationDbContext();
 
         }
-        public TripAgencyController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
-        }
+       
         // GET: TripAgency
 
         public ActionResult Index()
