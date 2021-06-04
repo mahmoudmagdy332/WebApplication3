@@ -178,9 +178,18 @@ namespace WebApplication3.Controllers
           
             return View(post);
         }
+        public ActionResult ReceivedQuestions()
+        {
+            var UserID = User.Identity.GetUserId();
+            var comments = from comment in db.Comments
+                           join post in db.Posts
+                           on comment.PostId equals post.Id
+                           where post.UserId == UserID select comment ;
+            return View(comments.ToList());
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Answer(string Answer,int PostId,int CommentId)
+        public ActionResult Answer(string Answer,int CommentId)
         {
 
             if (ModelState.IsValid)
@@ -191,9 +200,7 @@ namespace WebApplication3.Controllers
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
             }
-
-
-            return RedirectToAction("Details/"+ PostId);
+            return Redirect("/TripAgency/ReceivedQuestions");
         }
 
  
@@ -240,23 +247,7 @@ namespace WebApplication3.Controllers
             return View(post);
         }
 
-        // GET: TripAgency/Delete/5
-        /*
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Post post = db.Posts.Find(id);
-            if (post == null)
-            {
-                return HttpNotFound();
-            }
-            return View(post);
-        }
-*/
-        // POST: TripAgency/Delete/5
+
 
         public ActionResult DeletePost(int? id)
         {

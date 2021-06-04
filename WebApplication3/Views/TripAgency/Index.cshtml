@@ -1,86 +1,100 @@
-﻿@model IEnumerable<WebApplication3.Models.Post>
+﻿
+@model IEnumerable<WebApplication3.Models.Post>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "AgencyHistory";
+    Layout = "~/Views/Shared/Agency_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="content">
 
-<p>
-    @Html.ActionLink("Create New", "CreatePost")
-    @Html.ActionLink("Profile", "Profile")
-</p>
-<table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.TripTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripDestenation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripImage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TripDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PostDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Approved)
-        </th>
-        <th></th>
-    </tr>
+    <!-- start Posts table -->
 
-@foreach (var item in Model) {
-    <tr>
-    
-        <td>
-            @Html.DisplayFor(modelItem => item.TripTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TripDestenation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TripDetails)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TripImage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TripDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PostDate)
-        </td>
-        <td>
-            @if (item.Approved)
-            {
-                <p>1</p>
-            }
-            else
-            {
-                <p>0</p>
-            }
-           
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditPost", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeletePost", new { id=item.Id })
-        </td>
-    </tr>
-}
+    <div class="container">
+        <div class="row postsTable">
+            <div class="col">
+                <h2 class="text-center">My Posts</h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TripImage)
+                                </th>
 
-</table>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TripTitle)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TripDestenation)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TripDetails)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TripDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PostDate)
+                                </th>
+
+
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/upload/Post_images/@item.TripImage" style="width:70px;height:70px;margin-top:-8px" />
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TripTitle)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TripDestenation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TripDetails)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TripDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PostDate)
+                                    </td>
+
+                                    <td>
+                                        <!-- start buttons -->
+                                 
+                                            <a href="/TripAgency/EditPost/@item.Id" class="btn btn-info" style="text-decoration:none ;color:white">Edit Post</a>
+
+                                            <a href="/TripAgency/DeletePost/@item.Id" class="btn  btn-warning" >Delete Post</a>
+
+ 
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end Posts table -->
+
+
+</div>

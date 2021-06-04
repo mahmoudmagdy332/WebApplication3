@@ -7,9 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication3.Models;
-
+using Microsoft.AspNet.Identity;
 namespace WebApplication3.Controllers
 {
+    [Authorize(Roles = "TripsAgencey")]
     public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -62,19 +63,11 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Comments/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.PostId = new SelectList(db.Posts, "Id", "TripTitle", comment.PostId);
-            return View(comment);
+            var UserId = User.Identity.GetUserId();
+            var posts = db.Posts.Where(a => a.UserId == UserId);
+            return View(posts.ToList());
         }
 
         // POST: Comments/Edit/5

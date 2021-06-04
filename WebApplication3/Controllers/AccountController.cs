@@ -63,12 +63,10 @@ namespace WebApplication3.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
+        
                 return Redirect("/");
-            }
-            ViewBag.ReturnUrl = returnUrl;
-            return View();
+      
+        
         }
 
 
@@ -76,7 +74,7 @@ namespace WebApplication3.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+    
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -90,15 +88,10 @@ namespace WebApplication3.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return Json(new { result = true });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    return Json(new { result = false });
             }
         }
 
@@ -160,7 +153,6 @@ namespace WebApplication3.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase UserPhoto)
         {
            
@@ -186,8 +178,8 @@ namespace WebApplication3.Controllers
 
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    return RedirectToAction("Index", "Home");
+                
+                return Json(new { r = true }, JsonRequestBehavior.AllowGet);
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                  .ToList(), "Name", "Name");
@@ -195,7 +187,7 @@ namespace WebApplication3.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return Json(new { r = false },JsonRequestBehavior.AllowGet);
         }
 
         //
@@ -411,10 +403,8 @@ namespace WebApplication3.Controllers
             return View(model);
         }
 
-        //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+
+ 
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
