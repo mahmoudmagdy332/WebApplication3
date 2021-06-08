@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "EditPost";
-    Layout = "~/Views/Shared/Agency_Layout.cshtml";
+    Layout = "~/Views/Shared/A.cshtml";
 }
 
 <div style="margin-left:250px;margin-top:70px;">
 
-    <h2 class="text-center">Edite Post</h2>
+    <h2 class="text-center ">Edite Post</h2>
     @using (Html.BeginForm("EditPost", "TripAgency", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()

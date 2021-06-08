@@ -5,7 +5,7 @@ namespace WebApplication3.Models
 {
     public class ProfileUserEdite
     {
-       
+      
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -102,6 +102,7 @@ namespace WebApplication3.Models
 
     public class RegisterViewModel
     {
+        public int Id { get; set; }
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -137,7 +138,7 @@ namespace WebApplication3.Models
         [Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
 
-
+      
         [Display(Name = "Photo")]
         public string Photo { get; set; }
     }

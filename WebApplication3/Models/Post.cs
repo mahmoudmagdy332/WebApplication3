@@ -37,4 +37,26 @@ namespace WebApplication3.Models
         public virtual ICollection<Like> Likes { get; set; }
         public virtual ICollection<SavePost> savePosts { get; set; }
     }
+    public class PostComentModel
+    {
+        public string TripTitle { get; set; }
+       
+        public string TripDestenation { get; set; }
+  
+        public string TripDetails { get; set; }
+
+        public string TripImage { get; set; }
+      
+        public double Price { get; set; }
+
+        public DateTime TripDate { get; set; }
+      
+        public DateTime PostDate { get; set; }
+
+        public bool  like { get; set; }
+        public bool dislike { get; set; }
+
+
+    }
+  
 }

@@ -26,17 +26,35 @@
 
 
                 <!-- Filter label-->
-                <label for="staticEmail" class="col-sm col-form-label filt">Filter</label>
-                <input class="form-control" id="anythingSearch" type="text"
-                       placeholder="Search by trip price, agency name, and trip date">
+                <form action="/Traveler/SearchIndex" method="post">
+                    <div class="row">
+
+                        <div class="col-4">
+                            <input class="form-control" id="anythingSearch" name="agency" type="text" placeholder="Search by agency ">
+                          </div>
+                        <div class="col-4">
+                          
+                            <input class="form-control" id="anythingSearch" name="price" type="search" placeholder="Search by price ">
+                        </div>
+                        <div class="col-2">
+
+                            <input type="date" id="birthday" name="date" style="width:100px;  " class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn btn-primary" value="search"/>
+                        </div>
+                    </div>
+           
+             
+               </form>
                 <!-- Navbar links -->
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav  ml-auto">
-                        <li class="nav-item"><a href="~/Views/Traveller/TravellerHome.cshtml" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="~/Views/Traveller/SavedPosts.cshtml" class="nav-link">Saved Posts</a></li>
+                        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="/Traveler/SavePosts" class="nav-link">Saved Posts</a></li>
                         <li class="nav-item">
                             <a href="/Account/LogOff" class="nav-link">Logout</a>
-                            
+
                         </li>
                     </ul>
                 </div>
@@ -58,9 +76,27 @@
 
 
                 <!-- Filter label-->
-                <label for="staticEmail" class="col-sm col-form-label filt">Filter</label>
-                <input class="form-control" id="anythingSearch" type="text"
-                       placeholder="Search by trip price, agency name, and trip date">
+                <form action="/Traveler/SearchIndex" method="post">
+                    <div class="row">
+
+                        <div class="col-4">
+                            <input class="form-control"  name="agency" type="text" placeholder="Search by agency ">
+                        </div>
+                        <div class="col-4">
+
+                            <input class="form-control"  name="price" type="search" placeholder="Search by price ">
+                        </div>
+                        <div class="col-2">
+
+                            <input type="date"  name="date" style="width:100px;  " class="form-control">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn btn-primary" value="search" />
+                        </div>
+                    </div>
+
+
+                </form>
                 <!-- Navbar links -->
                 <div class="collapse navbar-collapse" id="mynavbar">
                     <ul class="navbar-nav  ml-auto">
@@ -78,7 +114,11 @@
         </nav>
         <!-- end navbar -->
     }
+
+<div style="min-height:400px;">
     @RenderBody()
+</div>
+  
     <!-- start footer -->
     <div class="footer bg-dark">
         <div class="container bg-dark">
@@ -106,6 +146,7 @@
         </div>
     </div>
     <!-- end footer -->
+
     @Scripts.Render("~/Scripts/jquery.min.js")
     @Scripts.Render("~/Scripts/bootstrap.min.js")
     @Scripts.Render("~/bundles/jqueryval")

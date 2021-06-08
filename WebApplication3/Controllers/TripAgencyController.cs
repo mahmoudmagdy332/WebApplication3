@@ -260,6 +260,33 @@ namespace WebApplication3.Controllers
             {
                 return HttpNotFound();
             }
+            var comments = db.Comments.Where(a => a.PostId == post.Id).ToList();
+            if (comments.Count > 0)
+            {
+                foreach (var comment in comments)
+                {
+                    db.Comments.Remove(comment);
+                    db.SaveChanges();
+                }
+            }
+            var likes = db.Likes.Where(a => a.PostId == post.Id).ToList();
+            if (likes.Count > 0)
+            {
+                foreach (var like in likes)
+                {
+                    db.Likes.Remove(like);
+                    db.SaveChanges();
+                }
+            }
+            var saveposts = db.SavePosts.Where(a => a.PostId == post.Id).ToList();
+            if (saveposts.Count > 0)
+            {
+                foreach (var savepost in saveposts)
+                {
+                    db.SavePosts.Remove(savepost);
+                    db.SaveChanges();
+                }
+            }
             string path = Server.MapPath("~/upload/Post_images/");
             Upload.delete_Image(path, post.TripImage);
                 db.Posts.Remove(post);

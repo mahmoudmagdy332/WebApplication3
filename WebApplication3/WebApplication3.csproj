@@ -168,12 +168,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LikesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\SavePostsController.cs" />
+    <Compile Include="Controllers\TravelerController.cs" />
     <Compile Include="Controllers\TripAgencyController.cs" />
     <Compile Include="general\Upload.cs" />
     <Compile Include="Global.asax.cs">
@@ -3549,7 +3551,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -3572,7 +3573,6 @@
     <Content Include="Views\Manage\SetPassword.cshtml" />
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\TripAgency\CreatePost.cshtml" />
     <Content Include="Views\TripAgency\Delete.cshtml" />
     <Content Include="Views\TripAgency\Details.cshtml" />
@@ -3583,6 +3583,22 @@
     <Content Include="Views\Shared\Traveller_Layout.cshtml" />
     <Content Include="Views\Shared\Admin_Layout.cshtml" />
     <Content Include="Views\TripAgency\ReceivedQuestions.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\AddPost.cshtml" />
+    <Content Include="Views\Admin\AddUser.cshtml" />
+    <Content Include="Views\Admin\DeletePost.cshtml" />
+    <Content Include="Views\Admin\DeleteUser.cshtml" />
+    <Content Include="Views\Admin\EditPost.cshtml" />
+    <Content Include="Views\Admin\GetAllRequests.cshtml" />
+    <Content Include="Views\Admin\GetPosts.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Profile.cshtml" />
+    <Content Include="Views\Traveler\Index.cshtml" />
+    <Content Include="Views\Traveler\replies.cshtml" />
+    <Content Include="Views\Traveler\SavePosts.cshtml" />
+    <Content Include="Views\Traveler\SearchIndex.cshtml" />
+    <Content Include="Views\Home\_auth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

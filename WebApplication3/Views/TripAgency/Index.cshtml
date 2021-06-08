@@ -41,7 +41,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.PostDate)
                                 </th>
-
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Approved)
+                                </th>
 
                                 <th></th>
                             </tr>
@@ -50,41 +52,52 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        <img src="~/upload/Post_images/@item.TripImage" style="width:70px;height:70px;margin-top:-8px" />
+                            <tr>
+                                <td>
+                                    <img src="~/upload/Post_images/@item.TripImage" style="width:70px;height:70px;margin-top:-8px" />
 
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TripTitle)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TripDestenation)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TripDetails)
-                                    </td>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripTitle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripDestenation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripDetails)
+                                </td>
 
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TripDate)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PostDate)
-                                    </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TripDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PostDate)
+                                </td>
+                                <th>
+                                    @if (item.Approved == true)
+                                    {
+                                        <label>Yes</label>
+                                    }
+                                    else
+                                    {
+                                        <label>No</label>
+                                    }
 
-                                    <td>
-                                        <!-- start buttons -->
-                                 
-                                            <a href="/TripAgency/EditPost/@item.Id" class="btn btn-info" style="text-decoration:none ;color:white">Edit Post</a>
+                                </th>
 
-                                            <a href="/TripAgency/DeletePost/@item.Id" class="btn  btn-warning" >Delete Post</a>
+                                <td>
+                                    <!-- start buttons -->
 
- 
-                                    </td>
-                                </tr>
+                                    <a href="/TripAgency/EditPost/@item.Id" class="btn btn-info" style="text-decoration:none ;color:white">Edit Post</a>
+
+                                    <a href="/TripAgency/DeletePost/@item.Id" class="btn  btn-warning">Delete Post</a>
+
+
+                                </td>
+                            </tr>
                             }
                         </tbody>
 
